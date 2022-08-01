@@ -1,0 +1,106 @@
+---
+title: 'Marriage point managment'
+date: '2022-08-01'
+tags: []
+draft: false
+summary: 'I was working in factories and many times I had to create logic for the connection point with different types.
+Of course the most important thing was cycle time and correct sequence of upcoming types.
+There are many ways how to make it. Depend of size of branches we can use FIFO queue, but sometimes we want to have some smaller solution .
+I would like to show how make universal logic for it.'
+authors: ['mariusz']
+---
+
+# Marriage point management
+
+I was working in factories and many times I had to create logic for the connection point with different types.
+Of course the most important thing was cycle time and correct sequence of upcoming types.
+There are many ways how to make it. Depend of size of branches we can use FIFO queue, but sometimes we want to have some smaller solution .
+I would like to show how make universal logic for it.
+
+# Part flow
+
+I use Vass5 line as example, but I will try present universal pattern of logic for it.
+
+![image](/blog/marriage-point-managment/Images/LineOverwiev.jpg)
+
+Our (master) branch which dictated produced type is way with red circles.
+With part stops (robot or station) P1..4.
+Addition way (slave) is green circles P1..2.
+Merging point is blue circle.
+P1 is conveyor with two types of parts.
+P1 is two rack towers, BH1 with parts for first type, BH2 for second type.
+
+Our master way has 4 elements length. Slave only 2 elements. We would like to have universal pattern for it.
+So we assign variables like M(master) = 4 and S(Slave) = 2
+
+Merging point is turn table with two station each for another type. 425210WZ = 1, 425210V02 = 2.
+Where first part is from slave side P2 and second from master P4.
+
+# Logic concept
+
+### Robot 425165R01 P2
+
+At the beginning we need to introduce variables for each part stop element with information about current handled type.
+We need to avoid situation with overproduce of parts on slave side.
+Try imagine situation where part will be detected by sensors on station and robot during picking in the same time.
+We need to separate it in properly way, so good option will be use some signal which inform that robot is not in station workspace.
+PF signal(A75_PF1V2) will be used in example (Robot out of workspace). Each type has separate robot program (1 and 71 for type 2).
+For minimization cycle time, we detect part on robot when he start program and he doesn't drop part on next station (FM3 - status drop part finished).
+
+![image](/blog/marriage-point-managment/Images/425165R01_PartOnRobot.jpg)
+
+### Station 425170 P3
+
+We have separation between 425165R01 and 425170 by use signal robot out of workspace, so we don't have to use separation signal again in station logic.
+It will be better for cycle time also, because we will have information about part on station immediately after drop (not after leave workspace by robot).
+
+![image](/blog/marriage-point-managment/Images/425170_PartOnStation.jpg)
+
+### Robot 425175R01 P4
+
+Using the fact that slave side drop part first on station 425210.
+We could have situation, that Robot 425175R01 waits with part on gripper.
+Important moment is introducing variable that robot has a part.
+It is similar to previous, but we need to separate here again station 425170 and robot by robot out of workspace signal.
+
+![image](/blog/marriage-point-managment/Images/425175R01_PartIsOnRobot.bmp)
+
+### Robot 425195R01 P2
+
+This is first slave element. We will order robot to execute specified program number base on merging point requirement.
+On muster side we protect line against detect to many parts by separation.
+On slave side we have to avoid disappear of part, because this will overproduce part on slave side.
+So we will use signal like PartIsNotOnX. Where '/' mean negation of part on specified element.
+
+![image](/blog/marriage-point-managment/Images/425195R01_PartIsNotOnRobot.bmp)
+
+In our sample slave way is too short to present usage of signal PartIsNotOn, but it will be used in general pattern MxN
+We should prepare PartIsNotOnX signal for each element in slave way except first (because robot is not able to be in two places in the same time)
+
+## Order part type logic
+
+In our logic pattern we will always control first robot in slave way.
+It doesn't matter how many element this ways contains. This logic below is the same like for type 2.
+There are only different signals.
+
+![image](/blog/marriage-point-managment/Images/425195R01_Order_1.bmp)
+
+This is our calculate matrix. We starting from first case, with use signal PartIsNotOnStation.
+In this case is enough to use marker with information that station for type 1 is free.
+In general case we have S-1(1 is first robot taking a part in slave way) count.
+Merging point process starting from slave then we calculate this also like slave way element.
+On start will be "and" logic of S-1 PartIsNotOnX signals(whole slave way is empty).
+This or logic in first branch there is One or more element is on master way.
+
+Second branch should start from "One element is on slave way".
+Then there should be OR of all slave way signal PartIsOnX and S-2 "and" PartIsNotOnX other slave elements
+and logic of all combination at least two parts on master way.
+
+We could create more branch depend of count of salve/master elements.
+This matrix logic must be in shortcut relation, that count of slave parts < count of master parts.
+
+There is also alternative way of make it. Which is very useful when M,S is bigger.
+By comparing of variables which will contains current sum of all partIsOnX on Slave and Master way.
+But there is important that in each cycle summation must start from 0 to avoid for example take part by worker from inside the line.
+
+Thank you for read

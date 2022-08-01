@@ -1,8 +1,8 @@
 const siteMetadata = {
-  title: 'bgolebiowski blog',
-  author: 'Bartosz Golebiowski',
-  headerTitle: 'Golebiowski blog',
-  description: 'Blog with articles about frontend technology, react, micro-frontends, single-spa',
+  title: 'BMGK Blog',
+  author: 'Bartosz Golebiowski & Mariusz Kaleta',
+  headerTitle: 'BMGK Blog',
+  description: 'Blog with articles about IT, PLC and math',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://bgolebiowski.com/',
