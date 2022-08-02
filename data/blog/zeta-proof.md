@@ -1,5 +1,5 @@
 ---
-title: 'Zeta proof'
+title: 'Proof of the Riemann hypothesis'
 date: '2022-08-01'
 tags: ['Riemann hypothesis','Proof','Math','Number theory']
 draft: false
