@@ -1,17 +1,26 @@
 ---
 name: Mariusz Kaleta
 avatar: /static/mariusz-kaleta.jpg
-occupation: PLC engineer
+occupation: PLC/C# engineer
 company: BMGK.tech
 email: mariusz.kaleta@bmgk.tech
 linkedin: https://www.linkedin.com/in/mariusz-kaleta-21417013b/
+twitter: https://twitter.com/KaletaMariusz
+github: https://github.com/MariuszKaleta
 ---
 
-I am a PLC programmer with experience in automotive standards.
+I am a .NET programmer with experience in industrial automation.
 
 —
 
-Currently I am developing code generators for PLCs.
-Seeker of universal patterns of logic, which could be implement to speed up and ease work.
-Author of the PLC.Tia.Net, library written in C# used to create application cooperating with tia openness and software
-Creator of VASS6 PLC logic code generating tool dedicated to VASS6 standard.
+
+Author of https://plctianetlibrary.bmgk.tech/ framework for writing PLC code in C# and
+https://vass6plccreator.bmgk.tech/ code generator tool dedicated for Volkswagen standard.
+Seeker of universal patterns of logic, which could i implement in my applications to speed up and ease work PLC programmers.
+
+I’m interested in stock markets, geopolitics and blacksmith.
+I’m currently learning "Quantum informatics" and developing code generators for PLCs.
+
+
+
+
