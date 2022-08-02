@@ -101,6 +101,8 @@ This equation we can write as a product. Let’s define our ”helper” functio
 
 ![image](/blog/zeta-proof/Maths/Zeta/Helper.jpg?style=centerme)
 
+![image](/blog/zeta-proof/Maths/Zeta/TransformedZeta.jpg?style=centerme)
+
 ## Functional Relation
 
 ![image](/blog/zeta-proof/Maths/Zeta/FunctionalRelation.jpg?style=centerme)
