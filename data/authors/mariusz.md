@@ -13,14 +13,9 @@ I am a .NET programmer with experience in industrial automation.
 
 —
 
-
+Seeker of universal patterns of logic, which could I implement in my applications to speed up and ease work PLC programmers.
 Author of https://plctianetlibrary.bmgk.tech/ framework for writing PLC code in C# and
 https://vass6plccreator.bmgk.tech/ code generator tool dedicated for Volkswagen standard.
-Seeker of universal patterns of logic, which could i implement in my applications to speed up and ease work PLC programmers.
 
 I’m interested in stock markets, geopolitics and blacksmith.
 I’m currently learning "Quantum informatics" and developing code generators for PLCs.
-
-
-
-
