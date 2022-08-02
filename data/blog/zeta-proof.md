@@ -1,20 +1,20 @@
 ---
 title: 'Zeta proof'
 date: '2022-08-01'
-tags: [Proof Riemann hypothesis Math]
+tags: ['Riemann hypothesis','Proof','Math','Number theory']
 draft: false
 summary: 'When I have made decision about create this blog I decided to write mostly about widely IT and PLC code generation.  
 To be honest I really like mathematics-related issues also.
-In this article I will try to show my proposition of proof for Riemann hypothesis, that all non-trival zeros of Zeta[s] has real part equal 1/2.
+In this article I will try to show my proposition of proof for Riemann hypothesis, that all non-trivial zeros of Zeta[s] has real part equal 1/2.
 Full version of my struggles is in attached pdf file. Below I will present shortcut version.'
 authors: ['mariusz']
 ---
 
 # Introduce
 
-When I have made decision about create this blog I decided to write mostly about widely IT and PlC code generation.  
+When I have made decision about create this blog I decided to write mostly about widely IT and PLC code generation.  
 To be honest I really like mathematics-related issues also.
-In this article I will try to show my proposition of proof for Riemann hypothesis, that all non-trival zeros of Zeta[s] has real part equal 1/2.
+In this article I will try to show my proposition of proof for Riemann hypothesis, that all non-trivial zeros of Zeta[s] has real part equal 1/2.
 Full version of my struggles is in attached pdf file. Below I will present shortcut version.
 
 # Transformation
