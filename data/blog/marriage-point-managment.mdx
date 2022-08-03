@@ -93,9 +93,8 @@ The merging point process starts from slave then we calculate this also like the
 At the start will be the "and" logic of S-1 "PartIsNotOnX" signals(the whole slave way is empty).
 This "or" logic in the first branch there is one or more elements on the master way.
 
-The second branch should start from "One element is on slave way".
-Then there should be OR of all slave way signal PartIsOnX and S-2 "and" PartIsNotOnX other slave elements
-and logic of all combinations at least two parts on the master way.
+The second branch means that if one element is on the "slave" side the "master" way must have, at least 2 parts.
+We should start from the logic "One element is on slave way" and next to OR of all combination "slave" signals "PartIsOnX" that we have 2 parts on the "master" side.
 
 We could create more branches depending on the count of salve/master elements.
 This matrix logic must be in shortcut relation, that count of slave parts < count of master parts.
